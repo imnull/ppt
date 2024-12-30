@@ -22,7 +22,7 @@
         <template #content>
           <ShapePool @select="shape => drawShape(shape)" />
         </template>
-        <Tooltip :mouseLeaveDelay="0" :mouseEnterDelay="0.5" title="插入形状">
+        <Tooltip v-if="!isLite" :mouseLeaveDelay="0" :mouseEnterDelay="0.5" title="插入形状">
           <IconGraphicDesign class="handler-item" :class="{ 'active': creatingElement?.type === 'shape' }" />
         </Tooltip>
       </Popover>
@@ -30,7 +30,7 @@
         <template #content>
           <LinePool @select="line => drawLine(line)" />
         </template>
-        <Tooltip :mouseLeaveDelay="0" :mouseEnterDelay="0.5" title="插入线条">
+        <Tooltip v-if="!isLite" :mouseLeaveDelay="0" :mouseEnterDelay="0.5" title="插入线条">
           <IconConnection class="handler-item" :class="{ 'active': creatingElement?.type === 'line' }" />
         </Tooltip>
       </Popover>
@@ -38,7 +38,7 @@
         <template #content>
           <ChartPool @select="chart => { createChartElement(chart); chartPoolVisible = false }" />
         </template>
-        <Tooltip :mouseLeaveDelay="0" :mouseEnterDelay="0.5" title="插入图表">
+        <Tooltip v-if="!isLite" :mouseLeaveDelay="0" :mouseEnterDelay="0.5" title="插入图表">
           <IconChartProportion class="handler-item" />
         </Tooltip>
       </Popover>
@@ -49,11 +49,11 @@
             @insert="({ row, col }) => { createTableElement(row, col); tableGeneratorVisible = false }"
           />
         </template>
-        <Tooltip :mouseLeaveDelay="0" :mouseEnterDelay="0.5" title="插入表格">
+        <Tooltip v-if="!isLite" :mouseLeaveDelay="0" :mouseEnterDelay="0.5" title="插入表格">
           <IconInsertTable class="handler-item" />
         </Tooltip>
       </Popover>
-      <Tooltip :mouseLeaveDelay="0" :mouseEnterDelay="0.5" title="插入公式">
+      <Tooltip v-if="!isLite" :mouseLeaveDelay="0" :mouseEnterDelay="0.5" title="插入公式">
         <IconFormula class="handler-item" @click="latexEditorVisible = true" />
       </Tooltip>
       <Popover trigger="click" v-model:visible="mediaInputVisible">
@@ -64,7 +64,7 @@
             @insertAudio="src => { createAudioElement(src); mediaInputVisible = false }"
           />
         </template>
-        <Tooltip :mouseLeaveDelay="0" :mouseEnterDelay="0.5" title="插入音视频">
+        <Tooltip v-if="!isLite" :mouseLeaveDelay="0" :mouseEnterDelay="0.5" title="插入音视频">
           <IconVideoTwo class="handler-item" />
         </Tooltip>
       </Popover>
@@ -203,7 +203,10 @@ export default defineComponent({
       linePoolVisible.value = false
     }
 
+    const isLite = ref(true)
+
     return {
+      isLite,
       scaleCanvas,
       resetCanvas,
       canvasScalePercentage,

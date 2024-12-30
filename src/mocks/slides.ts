@@ -1,6 +1,6 @@
 import { Slide } from '@/types/slides'
 
-export const slides: Slide[] = [
+export const slides_bk: Slide[] = [
   {
     id: 'test-slide-1',
     elements: [
@@ -177,6 +177,43 @@ export const slides: Slide[] = [
         defaultColor: '#333',
         wordSpace: 5
       }
+    ],
+    background: {
+      type: 'solid',
+      color: '#fff',
+    },
+  },
+]
+
+export const slides: Slide[] = [
+  {
+    id: 'test-slide-1',
+    elements: [
+      {
+        type: 'text',
+        id: 'ptNnUJ',
+        left: 145,
+        top: 148,
+        width: 711,
+        height: 77,
+        lineHeight: 1.2,
+        content: '<p style=\'text-align: center;\'><strong><span style=\'font-size: 48px\'>在此处添加标题</span></strong></p>',
+        rotate: 0,
+        defaultFontName: 'Microsoft Yahei',
+        defaultColor: '#333',
+      }, 
+      {
+        type: 'text',
+        id: 'mRHvQN',
+        left: 207.50000000000003,
+        top: 249.84259259259264,
+        width: 585,
+        height: 56,
+        content: '<p style=\'text-align: center;\'><span style=\'font-size: 24px\'>在此处添加副标题</span></p>',
+        rotate: 0,
+        defaultFontName: 'Microsoft Yahei',
+        defaultColor: '#333',
+      }, 
     ],
     background: {
       type: 'solid',

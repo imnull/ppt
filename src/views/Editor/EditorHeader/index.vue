@@ -5,10 +5,11 @@
         <div class="menu-item"><IconFolderClose /> <span class="text">文件</span></div>
         <template #overlay>
           <Menu>
-            <MenuItem @click="setDialogForExport('pptx')">导出 PPTX</MenuItem>
-            <MenuItem @click="setDialogForExport('image')">导出图片</MenuItem>
-            <MenuItem @click="setDialogForExport('json')">导出 JSON</MenuItem>
-            <MenuItem @click="setDialogForExport('pdf')">打印 / 导出 PDF</MenuItem>
+            <MenuItem @click="setDialogForExport('pptx')">导入 MD</MenuItem>
+            <MenuItem v-if="!isLite" @click="setDialogForExport('pptx')">导出 PPTX</MenuItem>
+            <MenuItem v-if="!isLite" @click="setDialogForExport('image')">导出图片</MenuItem>
+            <MenuItem v-if="!isLite" @click="setDialogForExport('json')">导出 JSON</MenuItem>
+            <MenuItem v-if="!isLite" @click="setDialogForExport('pdf')">打印 / 导出 PDF</MenuItem>
           </Menu>
         </template>
       </Dropdown>
@@ -35,7 +36,7 @@
           </Menu>
         </template>
       </Dropdown>
-      <Dropdown :trigger="['click']">
+      <Dropdown v-if="!isLite" :trigger="['click']">
         <div class="menu-item"><IconHelpcenter /> <span class="text">帮助</span></div>
         <template #overlay>
           <Menu>
@@ -47,7 +48,7 @@
     </div>
 
     <div class="right">
-      <Tooltip :mouseLeaveDelay="0" title="导出">
+      <Tooltip v-if="!isLite" :mouseLeaveDelay="0" title="导出">
         <div class="menu-item" @click="setDialogForExport('pptx')">
           <IconShare size="18" fill="#666" />
         </div>
@@ -57,7 +58,7 @@
           <IconPpt size="19" fill="#666" style="margin-top: 1px;" />
         </div>
       </Tooltip>
-      <a href="https://github.com/pipipi-pikachu/PPTist" target="_blank">
+      <a v-if="!isLite" href="https://github.com/pipipi-pikachu/PPTist" target="_blank">
         <div class="menu-item"><IconGithub size="18" fill="#666" /></div>
       </a>
     </div>
@@ -112,7 +113,10 @@ export default defineComponent({
       window.open('https://github.com/pipipi-pikachu/PPTist/issues')
     }
 
+    const isLite = ref(true)
+
     return {
+      isLite,
       redo,
       undo,
       showGridLines,
