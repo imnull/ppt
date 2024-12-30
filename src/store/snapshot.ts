@@ -85,7 +85,7 @@ export const useSnapshotStore = defineStore('snapshot', {
         db.snapshots.update(allKeys[snapshotLength - 2] as number, { index: slidesStore.slideIndex })
       }
   
-      await db.snapshots.bulkDelete(needDeleteKeys)
+      await db.snapshots.bulkDelete(needDeleteKeys as number[])
   
       this.setSnapshotCursor(snapshotLength - 1)
       this.setSnapshotLength(snapshotLength)

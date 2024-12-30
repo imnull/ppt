@@ -7,12 +7,11 @@ import {
   selectParentNode,
   joinUp,
   joinDown,
-  Command,
 } from 'prosemirror-commands'
 
 export const buildKeymap = (schema: Schema) => {
   const keys = {}
-  const bind = (key: string, cmd: Command) => keys[key] = cmd
+  const bind = (key: string, cmd: unknown) => keys[key] = cmd
 
   bind('Alt-ArrowUp', joinUp)
   bind('Alt-ArrowDown', joinDown)
