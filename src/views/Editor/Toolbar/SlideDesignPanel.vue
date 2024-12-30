@@ -165,10 +165,10 @@
       </Popover>
     </div>
 
-    <div class="title dropdown" :class="{ 'active': showPresetThemes }" @click="togglePresetThemesVisible()" style="margin-top: 20px;">
+    <div v-if="!isLite" class="title dropdown" :class="{ 'active': showPresetThemes }" @click="togglePresetThemesVisible()" style="margin-top: 20px;">
       预置主题 <IconDown class="icon" />
     </div>
-    <div class="theme-list" v-if="showPresetThemes">
+    <div class="theme-list" v-if="!isLite && showPresetThemes">
       <div 
         class="theme-item" 
         v-for="(item, index) in themes" 
@@ -187,7 +187,7 @@
       </div>
     </div>
 
-    <div class="row"><Button style="flex: 1;" @click="applyThemeAllSlide()">应用主题到全部</Button></div>
+    <div v-if="!isLite" class="row"><Button style="flex: 1;" @click="applyThemeAllSlide()">应用主题到全部</Button></div>
   </div>
 </template>
 
@@ -347,7 +347,10 @@ export default defineComponent({
       slidesStore.setViewportRatio(value)
     }
 
+    const isLite = ref(true)
+
     return {
+      isLite,
       availableFonts,
       background,
       updateBackgroundType,

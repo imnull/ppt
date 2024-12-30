@@ -12,7 +12,7 @@
           :style="{ height: `${remarkHeight}px` }"
         />
       </div>
-      <Toolbar class="layout-content-right" />
+      <Toolbar class="layout-content-right" />         
     </div>
   </div>
 

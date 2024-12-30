@@ -46,19 +46,19 @@ export default defineComponent({
           { label: '样式', value: ToolbarStates.EL_STYLE },
           { label: '符号', value: ToolbarStates.SYMBOL },
           { label: '位置', value: ToolbarStates.EL_POSITION },
-          { label: '动画', value: ToolbarStates.EL_ANIMATION },
+          // { label: '动画', value: ToolbarStates.EL_ANIMATION },
         ]
       }
       return [
         { label: '样式', value: ToolbarStates.EL_STYLE },
         { label: '位置', value: ToolbarStates.EL_POSITION },
-        { label: '动画', value: ToolbarStates.EL_ANIMATION },
+        // { label: '动画', value: ToolbarStates.EL_ANIMATION },
       ]
     })
     const slideTabs = [
       { label: '设计', value: ToolbarStates.SLIDE_DESIGN },
       { label: '切换', value: ToolbarStates.SLIDE_ANIMATION },
-      { label: '动画', value: ToolbarStates.EL_ANIMATION },
+      // { label: '动画', value: ToolbarStates.EL_ANIMATION },
     ]
     const multiSelectTabs = [
       { label: '样式', value: ToolbarStates.EL_STYLE },
