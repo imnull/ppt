@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { IndexableTypeArray } from 'dexie'
 import { db, deleteDiscardedDB, Snapshot } from '@/utils/database'
+import { deepToRaw } from '@/utils/helper'
 
 import { useSlidesStore } from './slides'
 import { useMainStore } from './main'
@@ -38,10 +39,10 @@ export const useSnapshotStore = defineStore('snapshot', {
 
       await deleteDiscardedDB()
   
-      const newFirstSnapshot = {
+      const newFirstSnapshot = deepToRaw({
         index: slidesStore.slideIndex,
         slides: slidesStore.slides,
-      }
+      })
       await db.snapshots.add(newFirstSnapshot)
       this.setSnapshotCursor(0)
       this.setSnapshotLength(1)
